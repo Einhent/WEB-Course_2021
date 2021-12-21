@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="styleShop.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="js.js"></script>
+    <script src="Coockie.js"></script>
+    <script src="LocalStorage.js"></script>
+    <script src="basket.js"></script>
+</head>
+<body onload="readCookiePlace(); openCart()">
+<div class="conteiner">
+    <div class="header">
+        <h1>Мой первый сайт!</h1>
+    </div>
+    <div class="nav">
+        <div class="left">
+            <ul class="menu">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="text1.html">Яndex</a></li>
+                <li><a href="text2.html">Информация</a></li>
+                <li><a href="shop.html">Магазин</a></li>
+            </ul>
+        </div>
+        <div class="right" id="logout">
+        </div>
+    </div>
+    <div class="main">
+        <div id="wrapper">
+
+        </div>
+        <p><button id="clear_cart" onclick="clear_basket()">Очистить корзину</button></p>
+
+        <script type="text/javascript">
+                function addEvent(elem, type, handler) {
+                    if (elem.addEventListener) {
+                        elem.addEventListener(type, handler, false);
+                    } else {
+                        elem.attachEvent('on' + type, function () {
+                            handler.call(elem);
+                        });
+                    }
+                    return false;
+                }
+                // Устанавливаем обработчик события на каждую кнопку &quot;Добавить в корзину&quot;
+                for (var i = 0; i < itemBox.length; i++) {
+                    addEvent(itemBox[i].querySelector('.add_item'), 'click', addToCart);
+                }
+            </script>
+        </div>
+    </div>
+</div>
+<div class="footer"></div>
+<div style="text-align: center" id="popupWin" class="modalwin">
+    <h2> Регистрация </h2>
+    <form name="FormShadow" onsubmit="return Complete()" method="post">
+        <table class="TableForm">
+            <tr>
+                <td>Ведите логин</td>
+                <td><input type="text" name="Login" placeholder="Name" pattern="^[A-Za-zА-Яа-яЁё]+$" required></td>
+            </tr>
+            <tr>
+                <td>Ведите почту</td>
+                <td><input type="text" name="Email" placeholder="example@mail.com"
+                           pattern="([a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$)" required></td>
+            </tr>
+            <tr>
+                <td>Ведите пароль</td>
+                <td><input type="password" name="Pass1" placeholder="password" onfocus="this.select()" required></td>
+            </tr>
+            <tr>
+                <td>Повторите пароль</td>
+                <td><input type="password" name="Pass2" placeholder="password" onfocus="this.select()" required></td>
+            </tr>
+
+            <tr>
+                <td>Номер телефона</td>
+                <td><input type="tel" id="tel" name="tel" placeholder=89116294490 title="Введите ваш номер телефона"
+                           pattern="[0-9]{11}" required/></td>
+            </tr>
+            <tr>
+                <td>Ваш возраст:</td>
+                <td><SELECT name="age" title="Выберете ваш возраст">
+                    <OPTION value="">Выберите одну из опций</OPTION>
+                    <OPTION value="0-18 years">0-18 лет</OPTION>
+                    <OPTION value="18-30 years">18-30 лет</OPTION>
+                    <OPTION value="30-45 years">30-45 лет</OPTION>
+                    <OPTION value="45-60 years">45-60 лет</OPTION>
+                    <OPTION value="60+ years">60+ лет</OPTION>
+                </SELECT></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input class="CheckPass" type="submit" value="Отправить" name="Submit"
+                           onclick="window.location.reload();">
+                    <input class="CheckPass" type="reset" value="Стереть" name="Reset" placeholder="password" required>
+                </td>
+            </tr>
+        </table>
+
+    </form>
+</div>
+<div style="text-align: center" id="popupWin2" class="modalwin">
+    <h2> Логин </h2>
+    <form name="FormShadow2" method="post" onsubmit="return Check_login()">
+        <table class="TableForm">
+            <tr>
+                <td>Ведите логин</td>
+                <td><input type="text" name="Login" placeholder="Name" pattern="^[A-Za-zА-Яа-яЁё]+$" required></td>
+            </tr>
+            <tr>
+                <td>Ведите пароль</td>
+                <td><input type="password" name="Pas" placeholder="password" onfocus="this.select()" required></td>
+            </tr>
+            <td></td>
+            <td><input class="CheckPass" type="submit" value="Войти" name="Войти"
+                       onClick="Check_login()">
+                <input class="CheckPass" type="reset" value="Стереть" name="Reset" required></td>
+            </tr>
+        </table>
+    </form>
+</div>
+</div>
+</body>
+</html>
